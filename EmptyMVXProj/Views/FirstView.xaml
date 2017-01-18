@@ -6,11 +6,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:views="clr-namespace:MvvmCross.Wpf.Views;assembly=MvvmCross.Wpf"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             Background="Green">
     <Grid>
         <StackPanel>
-            <TextBox Text="{Binding Hello, Mode=TwoWay}" />
-            <TextBox Text="{Binding Hello, Mode=TwoWay}" />
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="OpenConnectionButton" Content="openConnection" Width="120" HorizontalAlignment="Left" Height="30" Click="OpenConnectionButton_Click"/>
+                <Button x:Name="RegisterChannelButton" Content="RegisterToChannel" Width="120" HorizontalAlignment="Left" Height="30" Click="RegisterButton_Click"/>
+                <TextBox x:Name="ChannelTextBox" Width="200" HorizontalAlignment="Right" Height="25" Text="{Binding ChannelToSendTo, Mode=TwoWay}"/>
+            </StackPanel>
+
+
+        <TextBlock Background="Transparent" Text="Type Message to be sent" Margin="10,20,0,0"/>
+            <TextBox x:Name="MessageTextBox" Height="60" Width="250" Background="AntiqueWhite" Margin="10,0,40,10" Text="{Binding MessageToSend, Mode=TwoWay}"/>
+            <Button Content="SendMessage" Height="30" Width="250" Margin="10,0,40,10" Command="{Binding SendMessageCommand}"/>
+
+            <TextBlock Background="Transparent" Text="Received messages" Margin="10,20,0,0"/>
+            <TextBox x:Name="ReceivedMessageTextBox" Height="60" Width="250" Background="AntiqueWhite" Margin="10,0,40,10" />
+
         </StackPanel>
     </Grid>
 </views:MvxWpfView>
