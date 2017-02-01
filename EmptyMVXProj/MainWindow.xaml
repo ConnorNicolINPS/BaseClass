@@ -5,6 +5,8 @@
                       xmlns:VM="clr-namespace:EmptyMVXProjCore.ViewModels;assembly=EmptyMVXProjCore"
                       Title="MainWindow"
                       WindowState="{Binding IsMaximized}"
+                      BorderBrush="{DynamicResource AccentColorBrush}"
+                      BorderThickness="1"
                       IgnoreTaskbarOnMaximize="{Binding HideTaskBar}"
                       IsWindowDraggable="{Binding IsDraggable}"
                       ResizeMode="CanMinimize">
