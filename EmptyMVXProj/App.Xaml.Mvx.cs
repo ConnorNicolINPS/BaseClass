@@ -1,5 +1,6 @@
 using System;
 using System.Windows;
+using EmptyMVXProjCore.ViewModels;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
 using MvvmCross.Wpf.Views;
@@ -18,6 +19,8 @@ namespace EmptyMVXProj
 
             var setup = new Setup(Dispatcher, presenter);
             setup.Initialize();
+
+            MainWindow.DataContext = new MainWindowViewModel();
 
             var start = Mvx.Resolve<IMvxAppStart>();
             start.Start();

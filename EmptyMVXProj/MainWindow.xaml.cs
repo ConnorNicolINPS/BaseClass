@@ -24,19 +24,6 @@ namespace EmptyMVXProj
         public MainWindow()
         {
             InitializeComponent();
-            Loaded += OnLoaded;
-        }
-
-        /// <summary>
-        /// Called when [loaded].
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="routedEventArgs">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
-        private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
-        {
-            WindowState = WindowState.Maximized;
-            ShowMinButton = true;
-            Loaded -= OnLoaded;
         }
     }
 }

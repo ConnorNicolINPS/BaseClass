@@ -2,13 +2,20 @@
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:VM="clr-namespace:EmptyMVXProjCore.ViewModels;assembly=EmptyMVXProjCore"
                       Title="MainWindow"
-                      Height="600"
-                      Width="800"
-                      WindowStyle="None"
                       WindowState="Maximized"
-                      IgnoreTaskbarOnMaximize="True">
+                      IgnoreTaskbarOnMaximize="{Binding HideTaskBar}"
+                      IsWindowDraggable="False"
+                      ResizeMode="CanMinimize">
+    <controls:MetroWindow.RightWindowCommands>
+        <controls:WindowCommands>
+            <Button Content="Show Taskbar" 
+                    Command="{Binding HideButtonCommand}"/>
+        </controls:WindowCommands>
+    </controls:MetroWindow.RightWindowCommands>
     <Grid>
+
 
         <!-- your content -->
 
