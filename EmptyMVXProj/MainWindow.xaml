@@ -4,13 +4,13 @@
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                       xmlns:VM="clr-namespace:EmptyMVXProjCore.ViewModels;assembly=EmptyMVXProjCore"
                       Title="MainWindow"
-                      WindowState="Maximized"
+                      WindowState="{Binding IsMaximized}"
                       IgnoreTaskbarOnMaximize="{Binding HideTaskBar}"
-                      IsWindowDraggable="False"
+                      IsWindowDraggable="{Binding IsDraggable}"
                       ResizeMode="CanMinimize">
     <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
-            <Button Content="Show Taskbar" 
+            <Button Content="Dock Window" 
                     Command="{Binding HideButtonCommand}"/>
         </controls:WindowCommands>
     </controls:MetroWindow.RightWindowCommands>
