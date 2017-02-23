@@ -10,8 +10,10 @@ namespace EmptyMVXProjCore.ViewModels
         : MvxViewModel
     {
         private ICommand sendMessageCommand;
+        private ICommand getStaffCommand;
         private string messageToSend;
         private string channelToSendTo;
+        private string successMessage;
         private MessagingService sendService;
 
         public FirstViewModel()
@@ -22,6 +24,11 @@ namespace EmptyMVXProjCore.ViewModels
         public ICommand SendMessageCommand
         {
             get { return this.sendMessageCommand ?? (this.sendMessageCommand = new MvxCommand(SendMessage)); }
+        }
+
+        public ICommand GetStaffCommand
+        {
+            get { return this.getStaffCommand ?? (this.getStaffCommand = new MvxCommand(GetStaff)); }
         }
 
         public string MessageToSend
@@ -35,6 +42,12 @@ namespace EmptyMVXProjCore.ViewModels
             set { this.SetProperty(ref this.channelToSendTo, value); }
         }
 
+        public string SuccessMessage
+        {
+            get { return this.successMessage; }
+            set { this.SetProperty(ref this.successMessage, value); }
+        }
+
         private async void SendMessage()
         {
             if (this.MessageToSend != null)
@@ -44,6 +57,20 @@ namespace EmptyMVXProjCore.ViewModels
             else
             {
                 MessageBox.Show("please enter some text to send", "no message entered");
+            }
+        }
+
+        private async void GetStaff()
+        {
+            var success = await sendService.GetStaff();
+
+            if (success)
+            {
+                successMessage = "WOOOOOOO HOOOOOOO SUCCESS!!!!!!";
+            }
+            else
+            {
+                successMessage = "SAD FACE :,( didnt work!!!";
             }
         }
     }

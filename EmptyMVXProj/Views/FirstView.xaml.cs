@@ -2,6 +2,8 @@ using System;
 using MvvmCross.Wpf.Views;
 using WebSocket4Net;
 using System.Windows;
+using EmptyMVXProjCore.Model;
+using Newtonsoft.Json;
 
 namespace EmptyMVXProj.Views
 {
@@ -13,7 +15,7 @@ namespace EmptyMVXProj.Views
         {
             this.InitializeComponent();
 
-            websocket = new WebSocket("ws://127.0.0.1:7941");
+            websocket = new WebSocket("ws://52.31.21.118:7941/");
             websocket.MessageReceived += OnMessageReceived;
         }
         private void OpenConnectionButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -25,8 +27,8 @@ namespace EmptyMVXProj.Views
         {
             if (!string.IsNullOrWhiteSpace(ChannelTextBox.Text))
             {
-                string message = $"{{\"action\":\"subscribe\", \"channel\":\"{ChannelTextBox.Text}\"}}";
-                websocket.Send(message);
+                PushMessage pMessage = new PushMessage("subscribe", ChannelTextBox.Text, string.Empty);
+                websocket.Send(JsonConvert.SerializeObject(pMessage));
             }
             else
             {
@@ -41,7 +43,5 @@ namespace EmptyMVXProj.Views
                 this.ReceivedMessageTextBox.Text += e.Message;
             }));
         }
-
-       
     }
 }
