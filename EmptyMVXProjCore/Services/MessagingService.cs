@@ -15,6 +15,8 @@ namespace EmptyMVXProjCore.Services
 {
     class MessagingService
     {
+        ////private const string BaseURL = "http://localhost:9090/";
+        ////private const string BaseURL = "http://172.17.186.222:9090/";
         private const string BaseURL = "http://52.31.21.118:9090/";
 
         private HttpResponseMessage response;
@@ -70,10 +72,8 @@ namespace EmptyMVXProjCore.Services
 
         private void AddAuthHeaders()
         {
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Authorization", "vision_connection token=3:2-2-923ce513d816459692645844e2a43e1e-1fef67f4b8804f15aab1dfc922ea0849");
-            ////client.DefaultRequestHeaders.Add("Content-Type", "application/json");
-            ////client.DefaultRequestHeaders.Add("X-Target-Organisation", "{{TargetOrganisation}}");
-            ////client.DefaultRequestHeaders.Add("X-Business-TransactionId", "123123");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Authorization", "vision_connection token=3:2-2-346a74f648d2439db200395f17c141e8-645d33fd6d9c46b89ba065cea76cc81b");
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
     }
 }

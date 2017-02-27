@@ -16,6 +16,8 @@ namespace EmptyMVXProj.Views
             this.InitializeComponent();
 
             websocket = new WebSocket("ws://52.31.21.118:7941/");
+            ////websocket = new WebSocket("ws://172.17.186.222:7941/");
+
             websocket.MessageReceived += OnMessageReceived;
         }
         private void OpenConnectionButton_Click(object sender, System.Windows.RoutedEventArgs e)

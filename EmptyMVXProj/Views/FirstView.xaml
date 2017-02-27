@@ -6,8 +6,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:views="clr-namespace:MvvmCross.Wpf.Views;assembly=MvvmCross.Wpf"
              mc:Ignorable="d" 
-             Background="Green"
-             Height="400">
+             Background="Green">
     <Grid >
         <StackPanel>
             <StackPanel Orientation="Horizontal">
