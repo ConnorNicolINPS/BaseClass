@@ -11,6 +11,7 @@ namespace EmptyMVXProjCore.ViewModels
     {
         private ICommand sendMessageCommand;
         private ICommand getStaffCommand;
+        private ICommand sendLogCommand;
         private string messageToSend;
         private string channelToSendTo;
         private string successMessage;
@@ -29,6 +30,11 @@ namespace EmptyMVXProjCore.ViewModels
         public ICommand GetStaffCommand
         {
             get { return this.getStaffCommand ?? (this.getStaffCommand = new MvxCommand(GetStaff)); }
+        }
+
+        public ICommand SendLogCommand
+        {
+            get { return this.sendLogCommand ?? (this.sendLogCommand = new MvxCommand(SendLogs)); }
         }
 
         public string MessageToSend
@@ -72,6 +78,11 @@ namespace EmptyMVXProjCore.ViewModels
             {
                 successMessage = "SAD FACE :,( didnt work!!!";
             }
+        }
+
+        private async void SendLogs()
+        {
+            await sendService.SendLog();
         }
     }
 }

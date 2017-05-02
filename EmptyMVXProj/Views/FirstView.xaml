@@ -23,9 +23,12 @@
             <TextBlock Background="Transparent" Text="Received messages" Margin="10,20,0,0"/>
             <TextBox x:Name="ReceivedMessageTextBox" Height="60" Width="250" Background="AntiqueWhite" Margin="10,0,40,10" />
 
-            <Border BorderThickness="0,1,0,0" BorderBrush="Black"/>
+            <Border BorderThickness="0,1,0,0" BorderBrush="Red"/>
             <Button x:Name="GetSatffBttn" Content="Get Staff" Command="{Binding GetStaffCommand}" Margin="10,10,40,10"  Width="250" Height="30" />
             <TextBlock x:Name="successTxtBox" Text="{Binding successMessage, Mode=TwoWay}" Margin="10,0,40,0"  Foreground="Red"/>
+
+            <Border BorderThickness="0,1,0,0" BorderBrush="Red"/>
+            <Button x:Name="sendLogBttn" Content="Get Staff" Command="{Binding SendLogCommand}" Margin="10,10,40,10"  Width="250" Height="30" />
         </StackPanel>
     </Grid>
 </views:MvxWpfView>

@@ -16,8 +16,8 @@ namespace EmptyMVXProjCore.Services
     class MessagingService
     {
         ////private const string BaseURL = "http://localhost:9090/";
-        ////private const string BaseURL = "http://172.17.186.222:9090/";
-        private const string BaseURL = "http://52.31.21.118:9090/";
+        private const string BaseURL = "http://172.17.186.222:9090/";
+        ////private const string BaseURL = "http://52.31.21.118:9090/";
 
         private HttpResponseMessage response;
         private HttpClient client;
@@ -70,9 +70,25 @@ namespace EmptyMVXProjCore.Services
 
         }
 
+        public async Task SendLog()
+        {
+            var logRequest = new { type = "this is the type", value = "this is the value" };
+            string serialisedLog = JsonConvert.SerializeObject(logRequest);
+            var content = new StringContent(serialisedLog, Encoding.UTF8, "application/json");
+
+            AddAuthHeaders();
+
+            var response = await client.PostAsync("v1/workflow/log/", content).ConfigureAwait(false);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var result = "Wooooooo Hoooooo";
+            }
+        }
+
         private void AddAuthHeaders()
         {
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Authorization", "vision_connection token=3:2-2-346a74f648d2439db200395f17c141e8-645d33fd6d9c46b89ba065cea76cc81b");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Authorization", "vision_connection token=3:2-2-3ef0d524b5f445468ec52ac6a1e74324-c29f814f0b4b41eca2538b2903beb51f");
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
     }
