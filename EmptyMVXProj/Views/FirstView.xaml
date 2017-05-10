@@ -18,17 +18,17 @@
 
             <TextBlock Background="Transparent" Text="Type Message to be sent" Margin="10,20,0,0"/>
             <TextBox x:Name="MessageTextBox" Height="60" Width="250" Background="AntiqueWhite" Margin="10,0,40,10" Text="{Binding MessageToSend, Mode=TwoWay}"/>
-            <Button x:Name="SendMessageButton" Content="SendMessage" Height="30" Width="250" Margin="10,0,40,10" Command="{Binding SendMessageCommand}"/>
+            <Button x:Name="SendMessageButton" Background="Aqua" Content="SendMessage" Height="30" Width="250" Margin="10,0,40,10" Command="{Binding SendMessageCommand}"/>
 
             <TextBlock Background="Transparent" Text="Received messages" Margin="10,20,0,0"/>
             <TextBox x:Name="ReceivedMessageTextBox" Height="60" Width="250" Background="AntiqueWhite" Margin="10,0,40,10" />
 
             <Border BorderThickness="0,1,0,0" BorderBrush="Red"/>
-            <Button x:Name="GetSatffBttn" Content="Get Staff" Command="{Binding GetStaffCommand}" Margin="10,10,40,10"  Width="250" Height="30" />
+            <Button x:Name="GetSatffBttn" Content="Get Staff" Command="{Binding GetStaffCommand}" Margin="10,10,40,10"  Width="250" Height="30"  Background="Aqua" />
             <TextBlock x:Name="successTxtBox" Text="{Binding successMessage, Mode=TwoWay}" Margin="10,0,40,0"  Foreground="Red"/>
 
             <Border BorderThickness="0,1,0,0" BorderBrush="Red"/>
-            <Button x:Name="sendLogBttn" Content="Get Staff" Command="{Binding SendLogCommand}" Margin="10,10,40,10"  Width="250" Height="30" />
+            <Button x:Name="sendLogBttn" Content="Get Staff" Command="{Binding SendLogCommand}" Margin="10,10,40,10"  Width="250" Height="30" Background="Aqua"/>
         </StackPanel>
     </Grid>
 </views:MvxWpfView>
