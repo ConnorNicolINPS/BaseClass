@@ -16,8 +16,8 @@ namespace EmptyMVXProjCore.Services
     class MessagingService
     {
         ////private const string BaseURL = "http://localhost:9090/";
-        private const string BaseURL = "http://172.17.186.222:9090/";
-        ////private const string BaseURL = "http://52.31.21.118:9090/";
+        ////private const string BaseURL = "http://172.17.186.222:9090/";
+        private const string BaseURL = "http://52.31.21.118:9090/";
 
         private HttpResponseMessage response;
         private HttpClient client;
