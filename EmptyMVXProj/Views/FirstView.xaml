@@ -5,12 +5,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:views="clr-namespace:MvvmCross.Wpf.Views;assembly=MvvmCross.Wpf"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <StackPanel>
-            <TextBox Text="{Binding Hello, Mode=TwoWay}" />
-            <TextBox Text="{Binding Hello, Mode=TwoWay}" />
+             mc:Ignorable="d" >
+    <Grid Background="Cyan">
+        <StackPanel Margin="10" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <TextBlock Text="Printing Test App!!" FontSize="20" Foreground="Red" Margin="0,0,0,15" HorizontalAlignment="Center"/>
+            <Button Content="GetNames" Background="Purple" Foreground="Green" FontSize="17" FontWeight="Bold" Width="200" Height="30" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+            <ScrollViewer Width="215" Height="200" Margin="10
+                          ">
+                <ListView ItemsSource="{Binding EvacuationList}" Width="200" Background="Bisque"/>
+            </ScrollViewer>
+            <Button Width="200" Height="200" Background="Yellow" Foreground="Blue" Content="PRINT NOW !!!" FontSize="28" FontWeight="Bold"/>
         </StackPanel>
+        
     </Grid>
 </views:MvxWpfView>
