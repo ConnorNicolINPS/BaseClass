@@ -20,7 +20,6 @@ namespace EmptyMVXProjCore.ViewModels
 
         private string messageToSend;
         private string channelToSendTo;
-        private string successMessage;
         private string receivedMessage;
         private string connectionStatus;
 
@@ -47,15 +46,6 @@ namespace EmptyMVXProjCore.ViewModels
             get { return this.sendMessageCommand ?? (this.sendMessageCommand = new MvxCommand(SendMessage)); }
         }
 
-        public ICommand GetStaffCommand
-        {
-            get { return this.getStaffCommand ?? (this.getStaffCommand = new MvxCommand(GetStaff)); }
-        }
-
-        public ICommand SendLogCommand
-        {
-            get { return this.sendLogCommand ?? (this.sendLogCommand = new MvxCommand(SendLogs)); }
-        }
         public ICommand OpenConnectionCommand
         {
             get{ return this.openConnectionCommand ?? (this.openConnectionCommand = new MvxCommand(OpenConnection)); }
@@ -76,11 +66,6 @@ namespace EmptyMVXProjCore.ViewModels
             set { this.SetProperty(ref this.channelToSendTo, value); }
         }
 
-        public string SuccessMessage
-        {
-            get { return this.successMessage; }
-            set { this.SetProperty(ref this.successMessage, value); }
-        }
         public string ReceivedMessage
         {
             get { return this.receivedMessage; }
@@ -104,25 +89,6 @@ namespace EmptyMVXProjCore.ViewModels
             {
                 MessageBox.Show("please enter some text to send", "no message entered");
             }
-        }
-
-        private async void GetStaff()
-        {
-            var success = await sendService.GetStaff();
-
-            if (success)
-            {
-                successMessage = "WOOOOOOO HOOOOOOO SUCCESS!!!!!!";
-            }
-            else
-            {
-                successMessage = "SAD FACE :,( didnt work!!!";
-            }
-        }
-
-        private async void SendLogs()
-        {
-            await sendService.SendLog();
         }
 
         private void OpenConnection()
