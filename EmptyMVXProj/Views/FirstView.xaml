@@ -15,9 +15,14 @@
                 <TextBox x:Name="ChannelTextBox" Width="200" HorizontalAlignment="Right" Height="25" Text="{Binding ChannelToSendTo, Mode=TwoWay}"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Margin="0,10">
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                 <TextBlock Text="Web socket connection status :" Margin="0,0,10,0"/>
                 <TextBlock Text="{Binding ConnectionStatus, Mode=TwoWay}" Foreground="Cyan"/>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="registration status :" Margin="0,0,10,0"/>
+                <TextBlock Text="{Binding RegisteredToAChannel, Mode=TwoWay}" Foreground="Cyan"/>
             </StackPanel>
 
             <TextBlock Background="Transparent" Text="Type Message to be sent" Margin="10,20,0,0"/>

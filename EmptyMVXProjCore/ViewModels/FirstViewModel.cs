@@ -13,8 +13,6 @@ namespace EmptyMVXProjCore.ViewModels
     public class FirstViewModel : MvxViewModel
     {
         private ICommand sendMessageCommand;
-        private ICommand getStaffCommand;
-        private ICommand sendLogCommand;
         private ICommand openConnectionCommand;
         private ICommand registerChannelCommand;
 
@@ -22,6 +20,7 @@ namespace EmptyMVXProjCore.ViewModels
         private string channelToSendTo;
         private string receivedMessage;
         private string connectionStatus;
+        private string registeredToAChannel;
 
         private MessagingService sendService;
         private IWebSocketHandler webSocketHandler;
@@ -30,6 +29,8 @@ namespace EmptyMVXProjCore.ViewModels
         public FirstViewModel()
         {
             sendService = new MessagingService();
+
+            RegisteredToAChannel = "Not registered";
 
             this.webSocketHandler = Mvx.Resolve<IWebSocketHandler>();
 
@@ -76,6 +77,12 @@ namespace EmptyMVXProjCore.ViewModels
             get { return this.connectionStatus; }
             set { this.SetProperty(ref this.connectionStatus, value); }
         }
+
+        public string RegisteredToAChannel
+        {
+            get{ return this.registeredToAChannel; }
+            set { this.SetProperty(ref this.registeredToAChannel, value); }
+        }
         #endregion
 
         #region Methods
@@ -100,7 +107,10 @@ namespace EmptyMVXProjCore.ViewModels
         private void RegisterChannel()
         {
             string registerMessage = JsonConvert.SerializeObject( new PushMessage("subscribe", this.ChannelToSendTo, string.Empty));
-            this.webSocketHandler.RegisterChannel(registerMessage);
+            if (this.webSocketHandler.RegisterChannel(registerMessage))
+            {
+                RegisteredToAChannel = "Registered to channel: " + ChannelToSendTo;
+            }
         }
 
         private void WebSocketHandler_OnMessageRecived(object sender, string message)
