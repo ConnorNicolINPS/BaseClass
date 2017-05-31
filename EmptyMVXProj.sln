@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmptyMVXProj", "EmptyMVXPro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmptyMVXProjCore", "EmptyMVXProjCore\EmptyMVXProjCore.csproj", "{2202A22E-C5F9-4DE3-8ACC-798FE84065B6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{1656B17E-79A0-476A-AD63-205709B6476C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketHandler", "WebSocketHandler.Portable\WebSocketHandler.csproj", "{CC342D27-78DD-4FE9-9412-A5E3B1DAFB53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketHandler.Wpf", "WebSocketHandler.Wpf\WebSocketHandler.Wpf.csproj", "{672793B2-3787-4718-85D9-2587C2541487}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +27,20 @@ Global
 		{2202A22E-C5F9-4DE3-8ACC-798FE84065B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2202A22E-C5F9-4DE3-8ACC-798FE84065B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2202A22E-C5F9-4DE3-8ACC-798FE84065B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC342D27-78DD-4FE9-9412-A5E3B1DAFB53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC342D27-78DD-4FE9-9412-A5E3B1DAFB53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC342D27-78DD-4FE9-9412-A5E3B1DAFB53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC342D27-78DD-4FE9-9412-A5E3B1DAFB53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{672793B2-3787-4718-85D9-2587C2541487}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{672793B2-3787-4718-85D9-2587C2541487}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{672793B2-3787-4718-85D9-2587C2541487}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{672793B2-3787-4718-85D9-2587C2541487}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CC342D27-78DD-4FE9-9412-A5E3B1DAFB53} = {1656B17E-79A0-476A-AD63-205709B6476C}
+		{672793B2-3787-4718-85D9-2587C2541487} = {1656B17E-79A0-476A-AD63-205709B6476C}
 	EndGlobalSection
 EndGlobal

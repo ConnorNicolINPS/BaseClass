@@ -74,10 +74,6 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="WebSocket4Net, Version=0.14.1.0, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
-      <HintPath>..\packages\WebSocket4Net.0.14.1\lib\net45\WebSocket4Net.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -88,6 +84,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="App.Xaml.Mvx.cs" />
+    <Compile Include="Bootstrap\WebSocketHandlerBootstrap.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="Views\FirstView.xaml.cs">
@@ -145,6 +142,14 @@
     <ProjectReference Include="..\EmptyMVXProjCore\EmptyMVXProjCore.csproj">
       <Project>{2202a22e-c5f9-4de3-8acc-798fe84065b6}</Project>
       <Name>EmptyMVXProjCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebSocketHandler.Portable\WebSocketHandler.csproj">
+      <Project>{CC342D27-78DD-4FE9-9412-A5E3B1DAFB53}</Project>
+      <Name>WebSocketHandler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebSocketHandler.Wpf\WebSocketHandler.Wpf.csproj">
+      <Project>{672793b2-3787-4718-85d9-2587c2541487}</Project>
+      <Name>WebSocketHandler.Wpf</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

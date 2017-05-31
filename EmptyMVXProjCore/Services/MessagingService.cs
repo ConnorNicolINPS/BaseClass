@@ -16,8 +16,8 @@ namespace EmptyMVXProjCore.Services
     class MessagingService
     {
         ////private const string BaseURL = "http://localhost:9090/";
-        ////private const string BaseURL = "http://172.17.186.222:9090/";
-        private const string BaseURL = "http://52.31.21.118:9090/";
+        private const string BaseURL = "http://172.17.186.222:9090/";
+        ////private const string BaseURL = "http://52.31.21.118:9090/";
 
         private HttpResponseMessage response;
         private HttpClient client;
@@ -33,8 +33,15 @@ namespace EmptyMVXProjCore.Services
         {
             try
             {
-                string jsonString = JsonConvert.SerializeObject(new TheMessage(Msg, chnl));
-                response = await client.PostAsync("v1.0/dbg/notification", new StringContent(jsonString)).ConfigureAwait(false);
+                string jsonString = JsonConvert.SerializeObject(new TheMessage("PushMessage", Msg, chnl));
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var request = new HttpRequestMessage(HttpMethod.Post, "v1/administration/notifications");
+                request.Content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+                response = await client.SendAsync(request).ConfigureAwait(false);
+
+                ////response = await client.PostAsync("v1/administration/notifications", new StringContent(jsonString)).ConfigureAwait(false);
 
                 if (response.IsSuccessStatusCode)
                 {

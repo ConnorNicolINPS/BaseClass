@@ -9,13 +9,22 @@ namespace EmptyMVXProjCore.Model
 {
     class TheMessage
     {
+        private string action;
         private string channel;
         private string message;
 
-        public TheMessage(string msg, string chnl)
+        public TheMessage(string act, string msg, string chnl)
         {
+            this.Action = act;
             this.Channel = chnl;
             this.Message = msg;
+        }
+
+        [JsonProperty(PropertyName = "action")]
+        public string Action
+        {
+            get { return action; }
+            set { action = value; }
         }
 
         [JsonProperty(PropertyName = "channel")]
