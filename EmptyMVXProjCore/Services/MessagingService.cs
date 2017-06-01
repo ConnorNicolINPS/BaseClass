@@ -15,8 +15,8 @@ namespace EmptyMVXProjCore.Services
 {
     class MessagingService
     {
-        ////private const string BaseURL = "http://localhost:9090/";
-        private const string BaseURL = "http://172.17.186.222:9090/";
+        private const string BaseURL = "http://localhost:9090/";
+        ////private const string BaseURL = "http://172.17.186.222:9090/";
         ////private const string BaseURL = "http://52.31.21.118:9090/";
 
         private HttpResponseMessage response;
@@ -29,19 +29,44 @@ namespace EmptyMVXProjCore.Services
             client.BaseAddress = new Uri(BaseURL);
         }
 
-        public async Task<bool> SendMessage(string Msg, string chnl)
+        public async Task<Response> SendMessage(string Msg, string chnl)
         {
             try
             {
-                string jsonString = JsonConvert.SerializeObject(new TheMessage("PushMessage", Msg, chnl));
+                string jsonString = JsonConvert.SerializeObject(new PushMessage("PushMessage", chnl, Msg));
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var request = new HttpRequestMessage(HttpMethod.Post, "v1/administration/notifications");
+                var request = new HttpRequestMessage(HttpMethod.Post, "/channel/community/shit");
                 request.Content = new StringContent(jsonString, Encoding.UTF8, "application/json");
 
                 response = await client.SendAsync(request).ConfigureAwait(false);
 
-                ////response = await client.PostAsync("v1/administration/notifications", new StringContent(jsonString)).ConfigureAwait(false);
+                var payload = await response.Content.ReadAsStringAsync();
+                Response serviceResponse;
+                try
+                {
+                     serviceResponse = JsonConvert.DeserializeObject<Response>(payload);
+                }
+                catch (Exception ex)
+                {
+                     serviceResponse = new Response("Error parsing data", HttpStatusCode.BadRequest);
+                }
+
+                return serviceResponse;
+            }
+            catch
+            {
+                Debug.WriteLine("failed to send message");
+                return null;
+            }
+        }
+
+        public async Task<bool> SendMessageToVertx(string Msg, string chnl)
+        {
+            try
+            {
+                string jsonString = JsonConvert.SerializeObject(new PushMessage("PushMessage", chnl, Msg));
+                response = await client.PostAsync("/v1/administration/notification", new StringContent(jsonString)).ConfigureAwait(false);
 
                 if (response.IsSuccessStatusCode)
                 {

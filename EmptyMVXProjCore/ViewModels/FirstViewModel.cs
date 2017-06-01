@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using EmptyMVXProjCore.Model;
 using WebSocketHandler;
 using MvvmCross.Platform;
+using System.Net.Http;
 
 namespace EmptyMVXProjCore.ViewModels
 {
@@ -21,6 +22,7 @@ namespace EmptyMVXProjCore.ViewModels
         private string receivedMessage;
         private string connectionStatus;
         private string registeredToAChannel;
+        private string messageReponse;
 
         private MessagingService sendService;
         private IWebSocketHandler webSocketHandler;
@@ -83,6 +85,12 @@ namespace EmptyMVXProjCore.ViewModels
             get{ return this.registeredToAChannel; }
             set { this.SetProperty(ref this.registeredToAChannel, value); }
         }
+
+        public string MessageReponse
+        {
+            get{ return this.messageReponse; }
+            set{ this.SetProperty(ref this.messageReponse, value); }
+        }
         #endregion
 
         #region Methods
@@ -90,7 +98,10 @@ namespace EmptyMVXProjCore.ViewModels
         {
             if (this.MessageToSend != null)
             {
-                var success = await sendService.SendMessage(this.messageToSend, this.ChannelToSendTo).ConfigureAwait(false);
+                Response response = await sendService.SendMessage(this.messageToSend, this.ChannelToSendTo).ConfigureAwait(false);
+                this.MessageReponse = $"Status code : {response.HttpStatus.ToString()}\nResponse message : {response.Payload}";
+
+                ////await sendService.SendMessageToVertx(this.messageToSend, this.ChannelToSendTo).ConfigureAwait(false);
             }
             else
             {

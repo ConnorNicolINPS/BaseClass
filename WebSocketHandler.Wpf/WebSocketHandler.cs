@@ -6,7 +6,8 @@
     public class WebSocketHandler : IWebSocketHandler
     {
         ////private const string WEBSOCKETURL = "ws://52.31.21.118:7941/";
-        private const string WEBSOCKETURL = "ws://172.17.186.222:7941/";
+        ////private const string WEBSOCKETURL = "ws://172.17.186.222:7941/";
+        private const string WEBSOCKETURL = "ws://localhost:9090/ws-websocket";
 
         public event EventHandler<string> OnMessageRecived;
         public event EventHandler<string> SocketOpened;

@@ -7,29 +7,56 @@
              xmlns:views="clr-namespace:MvvmCross.Wpf.Views;assembly=MvvmCross.Wpf"
              mc:Ignorable="d" 
              Background="Green">
+    <views:MvxWpfView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ButtonBase" TargetType="Button">
+                <Setter Property="Background" Value="Cyan"/>
+                <Setter Property="Foreground" Value="Gray"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="Margin" Value="5"/>
+            </Style>
+            <Style x:Key="DescriptionText" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="Purple"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Margin" Value="0,0,10,0"/>
+            </Style>
+            <Style x:Key="ReceivedText" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="Yellow"/>
+                <Setter Property="FontWeight" Value="Normal"/>
+            </Style>
+
+        </ResourceDictionary>
+    </views:MvxWpfView.Resources>
+   
     <Grid >
         <StackPanel Margin="10">
             <StackPanel Orientation="Horizontal">
-                <Button x:Name="OpenConnectionButton" Content="openConnection" Width="120" HorizontalAlignment="Left" Height="30" Command="{Binding OpenConnectionCommand}"/>
-                <Button x:Name="RegisterChannelButton" Content="RegisterToChannel" Width="120" HorizontalAlignment="Left" Height="30" Command="{Binding RegisterChannelCommand}"/>
+                <Button x:Name="OpenConnectionButton" Style="{StaticResource ButtonBase}" Content="openConnection" Width="120" HorizontalAlignment="Left" Command="{Binding OpenConnectionCommand}"/>
+                <Button x:Name="RegisterChannelButton" Style="{StaticResource ButtonBase}" Content="RegisterToChannel" Width="120" HorizontalAlignment="Left" Command="{Binding RegisterChannelCommand}"/>
                 <TextBox x:Name="ChannelTextBox" Width="200" HorizontalAlignment="Right" Height="25" Text="{Binding ChannelToSendTo, Mode=TwoWay}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                <TextBlock Text="Web socket connection status :" Margin="0,0,10,0"/>
-                <TextBlock Text="{Binding ConnectionStatus, Mode=TwoWay}" Foreground="Cyan"/>
+                <TextBlock Text="Web socket connection status :" Style="{StaticResource DescriptionText}"/>
+                <TextBlock Text="{Binding ConnectionStatus, Mode=TwoWay}" Style="{StaticResource ReceivedText}"/>
             </StackPanel>
             
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="registration status :" Margin="0,0,10,0"/>
-                <TextBlock Text="{Binding RegisteredToAChannel, Mode=TwoWay}" Foreground="Cyan"/>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <TextBlock Text="registration status :" Style="{StaticResource DescriptionText}"/>
+                <TextBlock Text="{Binding RegisteredToAChannel, Mode=TwoWay}" Style="{StaticResource ReceivedText}"/>
             </StackPanel>
 
-            <TextBlock Background="Transparent" Text="Type Message to be sent" Margin="10,20,0,0"/>
+            <TextBlock Background="Transparent" Text="Type Message to be sent" Style="{StaticResource DescriptionText}"/>
             <TextBox x:Name="MessageTextBox" Height="60" Width="250" Background="AntiqueWhite" Margin="10,0,40,10" Text="{Binding MessageToSend, Mode=TwoWay}"/>
-            <Button x:Name="SendMessageButton" Background="Yellow" Content="SendMessage" Height="30" Width="250" Margin="10,0,40,10" Command="{Binding SendMessageCommand}"/>
+            <Button x:Name="SendMessageButton" Content="SendMessage" Width="250" Style="{StaticResource ButtonBase}" Margin="10,0,40,10" Command="{Binding SendMessageCommand}"/>
 
-            <TextBlock Background="Transparent" Text="Received messages" Margin="10,20,0,0"/>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <TextBlock Text="Response received for last message sent: " Style="{StaticResource DescriptionText}"/>
+                <TextBlock Text="{Binding MessageReponse}" Style="{StaticResource ReceivedText}"/>
+            </StackPanel>
+
+            <TextBlock Background="Transparent" Text="Received messages" Style="{StaticResource DescriptionText}"/>
             <TextBox x:Name="ReceivedMessageTextBox" Height="60" Width="250" Background="AntiqueWhite" Margin="10,0,40,10" Text="{Binding ReceivedMessage, Mode=TwoWay}"/>
         </StackPanel>
     </Grid>
