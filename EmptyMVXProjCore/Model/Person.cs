@@ -5,12 +5,15 @@
         private string title;
         private string forename;
         private string surname;
+        private string displayName;
 
         public Person(string title, string forename, string surname)
         {
             this.Title = title;
             this.Forename = forename;
             this.Surname = surname;
+
+            this.DisplayName = $"{this.title}. {this.Forename} {this.Surname}";
         }
 
         public string Title
@@ -29,6 +32,11 @@
         {
             get { return surname; }
             set { surname = value; }
+        }
+        public string DisplayName
+        {
+            get { return displayName; }
+            set { displayName = value; }
         }
     }
 }

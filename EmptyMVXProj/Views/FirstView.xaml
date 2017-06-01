@@ -9,11 +9,11 @@
     <Grid Background="Cyan">
         <StackPanel Margin="10" VerticalAlignment="Top" HorizontalAlignment="Center">
             <TextBlock Text="Printing Test App!!" FontSize="20" Foreground="Red" Margin="0,0,0,15" HorizontalAlignment="Center"/>
-            <Button Content="GetNames" Background="Purple" Foreground="Green" FontSize="17" FontWeight="Bold" Width="200" Height="30" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+            <Button Content="GetNames" Background="Purple" IsEnabled="{Binding GetNameEnabled, Mode=TwoWay}" Foreground="Green" FontSize="17" FontWeight="Bold" Width="200" Height="30" Margin="0,0,0,10" HorizontalAlignment="Center" Command="{Binding GetNamesCommand}"/>
             <ScrollViewer Width="215" Height="200" Margin="10">
-                <ListView ItemsSource="{Binding EvacuationList}" Width="200" Background="Bisque"/>
+                <ListView ItemsSource="{Binding ListOfNames, Mode=TwoWay}" Width="200" Background="Bisque" DisplayMemberPath="DisplayName"/>
             </ScrollViewer>
-            <Button Width="200" Height="200" Background="Yellow" Foreground="Blue" Content="PRINT NOW !!!" FontSize="28" FontWeight="Bold"/>
+            <Button Width="200" Height="200" Background="Yellow" Foreground="Blue" Content="PRINT NOW !!!" FontSize="28" FontWeight="Bold" Command="{Binding PrintNamesCommamd}"/>
         </StackPanel>
         
     </Grid>

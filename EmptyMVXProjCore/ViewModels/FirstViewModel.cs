@@ -11,10 +11,12 @@ namespace EmptyMVXProjCore.ViewModels
         private ICommand getNamesCommand;
         private ICommand printNamesCommamd;
         private ObservableCollection<Person> listOfNames;
+        private bool getNameEnabled;
 
         public FirstViewModel()
         {
-            this.ListOfNames = new ObservableCollection<string>();
+            this.ListOfNames = new ObservableCollection<Person>();
+            GetNameEnabled = true;
         }
 
         public ICommand GetNamesCommand
@@ -33,6 +35,11 @@ namespace EmptyMVXProjCore.ViewModels
             set { this.SetProperty(ref this.listOfNames, value); }
         }
 
+        public bool GetNameEnabled
+        {
+            get { return this.getNameEnabled; }
+            set { this.SetProperty(ref this.getNameEnabled, value) ; }
+        }
 
         private void GetNamesAction()
         {
@@ -47,27 +54,32 @@ namespace EmptyMVXProjCore.ViewModels
             ListOfNames.Add(new Person("Mr", "James", "Potter"));
             ListOfNames.Add(new Person("Mrs", "Lilly", "Potter"));
             ListOfNames.Add(new Person("Mr", "Sirious", "Black"));
-            ListOfNames.Add(new Person("Mr", "Harry", "Potter"));
-            ListOfNames.Add(new Person("Mr", "Harry", "Potter"));
-            ListOfNames.Add(new Person("Mr", "Harry", "Potter"));
-            ListOfNames.Add(new Person("Mr", "Harry", "Potter"));
-            ListOfNames.Add(new Person("Mr", "Harry", "Potter"));
-            ListOfNames.Add(new Person("Mr", "Harry", "Potter"));
-            ListOfNames.Add(new Person("Mr", "Harry", "Potter"));
-            ListOfNames.Add(new Person("Mr", "Harry", "Potter"));
-            ListOfNames.Add(new Person("Mr", "Harry", "Potter"));
-            ListOfNames.Add(new Person("Mr", "Harry", "Potter"));
-            ListOfNames.Add(new Person("Mr", "Harry", "Potter"));
-            ListOfNames.Add(new Person("Mr", "Harry", "Potter"));
-            ListOfNames.Add(new Person("Mr", "Harry", "Potter"));
-            ListOfNames.Add(new Person("Mr", "Harry", "Potter"));
-            ListOfNames.Add(new Person("Mr", "Harry", "Potter"));
+            ListOfNames.Add(new Person("Prof", "Remus", "Lupin"));
+            ListOfNames.Add(new Person("Mrs", "Nymphadora", "Lupin"));
+            ListOfNames.Add(new Person("Lord", "Voldemort", "Evilson"));
+            ListOfNames.Add(new Person("Mr", "Tom", "Riddle"));
+            ListOfNames.Add(new Person("Prof", "Serverus", "Snape"));
+            ListOfNames.Add(new Person("Mr", "Peter", "Perttigrew"));
+            ListOfNames.Add(new Person("Mrs", "Bleatrix", "Lestrange"));
+            ListOfNames.Add(new Person("Mr", "Draco", "Malfoy"));
+            ListOfNames.Add(new Person("Mr", "Lucius", "Malfoy"));
+            ListOfNames.Add(new Person("Mr", "Narcissa", "Malfoy"));
+            ListOfNames.Add(new Person("Prof", "Albus", "Dumbledore"));
+            ListOfNames.Add(new Person("Prof", "Minerva", "McGonagall"));
+            ListOfNames.Add(new Person("Miss", "Luna", "Lovegoode"));
+            ListOfNames.Add(new Person("Mr", "Nevil", "Longbottom"));
+            ListOfNames.Add(new Person("Mr", "Alastor", "Moody"));
 
+            this.GetNameEnabled = false;
         }
 
         private void PrintNamesAction()
         {
-            throw new NotImplementedException();
+            //// ensure that the list of name is populated
+            if (this.ListOfNames.Count <= 0)
+            {
+                GetNamesAction();
+            }
         }
     }
 }
