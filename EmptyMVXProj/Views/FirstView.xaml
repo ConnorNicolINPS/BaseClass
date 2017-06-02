@@ -13,7 +13,7 @@
             <ScrollViewer Width="215" Height="200" Margin="10">
                 <ListView ItemsSource="{Binding ListOfNames, Mode=TwoWay}" Width="200" Background="Bisque" DisplayMemberPath="DisplayName"/>
             </ScrollViewer>
-            <Button Width="200" Height="200" Background="Yellow" Foreground="Blue" Content="PRINT NOW !!!" FontSize="28" FontWeight="Bold" Command="{Binding PrintNamesCommamd}"/>
+            <Button Width="200" Height="200" Background="Yellow" Foreground="Blue" Content="PRINT NOW !!!" FontSize="28" FontWeight="Bold" Click="Button_Click"/>
         </StackPanel>
         
     </Grid>

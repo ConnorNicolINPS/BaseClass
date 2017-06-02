@@ -3,13 +3,14 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System;
 using EmptyMVXProjCore.Model;
+using System.Windows.Controls;
+using System.Windows.Documents;
 
 namespace EmptyMVXProjCore.ViewModels
 {
     public class FirstViewModel : MvxViewModel
     {
         private ICommand getNamesCommand;
-        private ICommand printNamesCommamd;
         private ObservableCollection<Person> listOfNames;
         private bool getNameEnabled;
 
@@ -22,11 +23,6 @@ namespace EmptyMVXProjCore.ViewModels
         public ICommand GetNamesCommand
         {
             get { return this.getNamesCommand ?? (this.getNamesCommand = new MvxCommand(GetNamesAction)); }
-        }
-
-        public ICommand PrintNamesCommamd
-        {
-            get { return this.printNamesCommamd ?? (this.printNamesCommamd = new MvxCommand(PrintNamesAction)); }
         }
 
         public ObservableCollection<Person> ListOfNames
@@ -71,15 +67,6 @@ namespace EmptyMVXProjCore.ViewModels
             ListOfNames.Add(new Person("Mr", "Alastor", "Moody"));
 
             this.GetNameEnabled = false;
-        }
-
-        private void PrintNamesAction()
-        {
-            //// ensure that the list of name is populated
-            if (this.ListOfNames.Count <= 0)
-            {
-                GetNamesAction();
-            }
         }
     }
 }
