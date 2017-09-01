@@ -81,6 +81,7 @@
     </ApplicationDefinition>
     <Compile Include="App.Xaml.Mvx.cs" />
     <Compile Include="DebugTrace.cs" />
+    <Compile Include="Service\F5Services.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="Views\FirstView.xaml.cs">
       <DependentUpon>FirstView.xaml</DependentUpon>

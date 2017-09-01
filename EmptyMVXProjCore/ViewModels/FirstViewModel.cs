@@ -2,14 +2,20 @@ using MvvmCross.Core.ViewModels;
 
 namespace EmptyMVXProjCore.ViewModels
 {
-    public class FirstViewModel 
-        : MvxViewModel
+    public class FirstViewModel : MvxViewModel
     {
-        private string _hello = "Hello MvvmCross, TESTING";
-        public string Hello
-        { 
-            get { return _hello; }
-            set { SetProperty (ref _hello, value); }
+        private string responseText;
+
+        public FirstViewModel()
+        {
+
         }
+
+        public string ResponseText
+        {
+            get { return this.responseText; }
+            set { this.SetProperty(ref this.responseText, value); }
+        }
+
     }
 }
