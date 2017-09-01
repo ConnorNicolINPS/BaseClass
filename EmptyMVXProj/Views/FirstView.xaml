@@ -48,16 +48,19 @@
             </StackPanel>
 
             <TextBlock Background="Transparent" Text="Type Message to be sent" Style="{StaticResource DescriptionText}"/>
-            <TextBox x:Name="MessageTextBox" Height="60" Width="250" Background="AntiqueWhite" Margin="10,0,40,10" Text="{Binding MessageToSend, Mode=TwoWay}"/>
+            <TextBox x:Name="MessageTextBox" Height="60" Width="250" Background="AntiqueWhite" Margin="10,0,40,10" Text="{Binding MessageToSend, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PreviewKeyUp="MessageTextBox_PreviewKeyUp"/>
             <Button x:Name="SendMessageButton" Content="SendMessage" Width="250" Style="{StaticResource ButtonBase}" Margin="10,0,40,10" Command="{Binding SendMessageCommand}"/>
 
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,30">
                 <TextBlock Text="Response received for last message sent: " Style="{StaticResource DescriptionText}"/>
                 <TextBlock Text="{Binding MessageReponse}" Style="{StaticResource ReceivedText}"/>
             </StackPanel>
 
             <TextBlock Background="Transparent" Text="Received messages" Style="{StaticResource DescriptionText}"/>
-            <TextBox x:Name="ReceivedMessageTextBox" Height="60" Width="250" Background="AntiqueWhite" Margin="10,0,40,10" Text="{Binding ReceivedMessage, Mode=TwoWay}"/>
+            <ScrollViewer Height="60" Width="250" Margin="10,0,40,10" >
+                <TextBox x:Name="ReceivedMessageTextBox" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="AntiqueWhite" Text="{Binding ReceivedMessage, Mode=TwoWay}"/>
+            </ScrollViewer>
+
         </StackPanel>
     </Grid>
 </views:MvxWpfView>

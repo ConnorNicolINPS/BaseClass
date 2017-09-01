@@ -94,12 +94,12 @@ namespace EmptyMVXProjCore.ViewModels
         #endregion
 
         #region Methods
-        private async void SendMessage()
+        public async void SendMessage()
         {
             if (this.MessageToSend != null)
             {
                 Response response = await sendService.SendMessage(this.messageToSend, this.ChannelToSendTo).ConfigureAwait(false);
-                this.MessageReponse = $"Status code : {response.HttpStatus.ToString()}\nResponse message : {response.Payload}";
+                this.MessageReponse = $"Status code : {response.HttpStatus}\nResponse message : {response.Message}";
 
                 ////await sendService.SendMessageToVertx(this.messageToSend, this.ChannelToSendTo).ConfigureAwait(false);
             }

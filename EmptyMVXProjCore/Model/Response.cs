@@ -5,24 +5,24 @@ namespace EmptyMVXProjCore.Model
 {
     public class Response
     {
-        private string payload;
-        private HttpStatusCode httpStatus;
+        private string message;
+        private string httpStatus;
 
-        public Response(string payld, HttpStatusCode httpstats)
+        public Response(string payld, string httpstats)
         {
-            this.Payload = payld;
+            this.Message = payld;
             this.HttpStatus = httpstats;
         }
 
-        [JsonProperty(PropertyName = "payload")]
-        public string Payload
+        [JsonProperty(PropertyName = "message")]
+        public string Message
         {
-            get { return this.payload; }
-            set { this.payload = value; }
+            get { return this.message; }
+            set { this.message = value; }
         }
 
         [JsonProperty(PropertyName ="httpStatus")]
-        public HttpStatusCode HttpStatus
+        public string HttpStatus
         {
             get { return this.httpStatus; }
             set { this.httpStatus = value; }

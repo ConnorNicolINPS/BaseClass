@@ -15,10 +15,11 @@ namespace EmptyMVXProjCore.Services
 {
     class MessagingService
     {
-        ////private const string BaseURL = "http://localhost:9090/";
+        private const string BaseURL = "http://localhost:9090/";
         ////private const string BaseURL = "http://172.17.186.222:9090/";
         ////private const string BaseURL = "http://52.31.21.118:9090/";
-        private const string BaseURL = "http://172.17.186.111:9090";
+        ////private const string BaseURL = "http://172.17.186.111:9090";
+        ////private const string BaseURL = "http://inpsol08.is.inps.co.uk:9090";
 
         private HttpResponseMessage response;
         private HttpClient client;
@@ -37,8 +38,9 @@ namespace EmptyMVXProjCore.Services
                 string jsonString = JsonConvert.SerializeObject(new PushMessage("PushMessage", chnl, Msg));
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var request = new HttpRequestMessage(HttpMethod.Post, "/channel/community/shit");
+                var request = new HttpRequestMessage(HttpMethod.Post, "/v1/administration/notification");
                 request.Content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
 
                 response = await client.SendAsync(request).ConfigureAwait(false);
 
@@ -50,14 +52,14 @@ namespace EmptyMVXProjCore.Services
                 }
                 catch (Exception ex)
                 {
-                     serviceResponse = new Response("Error parsing data", HttpStatusCode.BadRequest);
+                     serviceResponse = new Response("Error parsing data", HttpStatusCode.BadRequest.ToString());
                 }
 
                 return serviceResponse;
             }
-            catch
+            catch (Exception ex)
             {
-                Debug.WriteLine("failed to send message");
+                Debug.WriteLine("failed to send message. reason:" + ex.InnerException);
                 return null;
             }
         }
@@ -75,7 +77,7 @@ namespace EmptyMVXProjCore.Services
                 }
                 return false;
             }
-            catch
+            catch(Exception ex)
             {
                 Debug.WriteLine("failed to send message");
                 return false;
