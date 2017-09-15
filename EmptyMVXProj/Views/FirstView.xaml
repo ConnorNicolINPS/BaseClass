@@ -6,10 +6,28 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:views="clr-namespace:MvvmCross.Wpf.Views;assembly=MvvmCross.Wpf"
              mc:Ignorable="d" >
+
     <Grid Width="700" Height="500" Background="Green">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
         <StackPanel HorizontalAlignment="Center" Margin="15">
-            <Button Width="200" Height="30" Background="Blue" Content="Get F5 Response" Margin="0,0,0,15"/>
-            <TextBlock Width="400" Height="250" Background="Red" Foreground="Orange" FontSize="20" Text="{Binding ResponseText, FallbackValue=ResponseWillGoHere }"/>
+            <StackPanel.Resources>
+                <ResourceDictionary>
+                    <BooleanToVisibilityConverter x:Key="BoolToVisConverter"/>
+                </ResourceDictionary>
+            </StackPanel.Resources>
+            <Button x:Name="CallServiceBttn" Width="200" Height="30" Background="Blue" Foreground="Orange" Content="Call Locator Service" Margin="0,0,0,15" Command="{Binding GetResponseCommand}"/>
+            <ComboBox x:Name="RegionSelectComboBox" Margin="0,0,0,15" ItemsSource="{Binding Regions}" SelectedItem="{Binding SelectedRegion}" SelectionChanged="RegionSelectComboBox_SelectionChanged" DisplayMemberPath="Region.Display" />
+            <ComboBox x:Name="HBSelectComboBox" Margin="0,0,0,15" ItemsSource="{Binding HealthBoards}" SelectedItem="{Binding SelectedHealthBoard}" SelectionChanged="HBSelectComboBox_SelectionChanged" Visibility="{Binding ShowHealthBoards, Converter={StaticResource BoolToVisConverter}}" DisplayMemberPath="Region.Display"/>
+            <TextBlock x:Name="UrlTxt" Background="Red" Height="250" Foreground="Cyan" Text="{Binding ResponseText}" FontSize="20"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Column="1" HorizontalAlignment="Center" Margin="15">
+            <Button Width="200" Height="30" Background="Blue" Content="Test connection to service" Margin="0,0,0,15" Command="{Binding GetFakeResponseCommand}"/>
+            <TextBlock Width="200" Height="250" Background="Red" Foreground="Orange" FontSize="20" Text="{Binding FakeResponseText}"/>
         </StackPanel>
     </Grid>
 </views:MvxWpfView>
