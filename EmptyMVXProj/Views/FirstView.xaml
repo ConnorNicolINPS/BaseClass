@@ -6,11 +6,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:views="clr-namespace:MvvmCross.Wpf.Views;assembly=MvvmCross.Wpf"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <StackPanel>
-            <TextBox Text="{Binding Hello, Mode=TwoWay}" />
-            <TextBox Text="{Binding Hello, Mode=TwoWay}" />
+             d:DesignHeight="700" d:DesignWidth="900">
+    <Grid Background="PaleTurquoise" Width="700" Height="900">
+        <StackPanel HorizontalAlignment="Left" >
+            <Button Margin="10" Background="Red" Content="Service Health Check" Height="30" Width="200" Command="{Binding HealthCheckCommand}"/>
+            <ListView ItemsSource="{Binding HealthCheckResults}" Background="Green">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="75"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Foreground="Orange" Text="{Binding ServiceName}"/>
+                            <TextBlock Foreground="Orange" Text="{Binding Status}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackPanel>
     </Grid>
 </views:MvxWpfView>
