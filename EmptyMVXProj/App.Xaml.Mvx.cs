@@ -14,9 +14,7 @@ namespace EmptyMVXProj
         {
             LoadMvxAssemblyResources();
             
-            var presenter = new MvxSimpleWpfViewPresenter(MainWindow);
-
-            var setup = new Setup(Dispatcher, presenter);
+            var setup = new Setup(Dispatcher, MainWindow);
             setup.Initialize();
 
             var start = Mvx.Resolve<IMvxAppStart>();

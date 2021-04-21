@@ -1,3 +1,4 @@
+using System.Windows.Controls;
 using System.Windows.Threading;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform.Platform;
@@ -9,14 +10,14 @@ namespace EmptyMVXProj
     public class Setup
         : MvxWpfSetup
     {
-        public Setup(Dispatcher dispatcher, IMvxWpfViewPresenter presenter)
-            : base(dispatcher, presenter)
+        public Setup(Dispatcher uiThreadDispatcher, ContentControl root)
+            : base(uiThreadDispatcher, root)
         {
         }
 
         protected override IMvxApplication CreateApp()
         {
-            return new EmptyMVXProjCore.App();
+            return new Core.App();
         }
 
         protected override IMvxTrace CreateDebugTrace()
