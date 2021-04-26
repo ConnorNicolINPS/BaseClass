@@ -1,3 +1,4 @@
+﻿
 
 namespace EmptyMVXProjCore.ViewModels
 {
@@ -5,21 +6,21 @@ namespace EmptyMVXProjCore.ViewModels
     using MvvmCross.Core.ViewModels;
     using MvvmCross.Platform;
 
-    public class FirstViewModel : MvxViewModel
+    public class SecondViewModel : MvxViewModel
     {
-        private MvxCommand goToSecondViewCommand;
+        private MvxCommand goToFirstViewCommand;
         private MvxCommand goToThirdViewCommand;
 
         private MvxNavigationService navService;
 
-        public FirstViewModel()
+        public SecondViewModel()
         {
             this.navService = Mvx.Resolve<MvxNavigationService>();
         }
 
-        public MvxCommand GoToSecondViewCommand
+        public MvxCommand GoToFirstViewCommand
         {
-            get { return this.goToSecondViewCommand ?? (this.goToSecondViewCommand = new MvxCommand(this.GoToSecondViewAction)); }
+            get { return this.goToFirstViewCommand ?? (this.goToFirstViewCommand = new MvxCommand(this.GoToFirstViewAction)); }
         }
 
         public MvxCommand GoToThirdViewCommand
@@ -27,14 +28,14 @@ namespace EmptyMVXProjCore.ViewModels
             get { return this.goToThirdViewCommand ?? (this.goToThirdViewCommand = new MvxCommand(this.GoToThirdViewAction)); }
         }
 
-        private void GoToSecondViewAction()
+        private void GoToFirstViewAction()
         {
-            this.navService.Navigate<SecondViewModel>();
+            this.navService.Navigate<FirstViewModel>();
         }
 
         private void GoToThirdViewAction()
         {
-           this.navService.Navigate<SecondViewModel>();
+            this.navService.Navigate<SecondViewModel>();
         }
     }
 }

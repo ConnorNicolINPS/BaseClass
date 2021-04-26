@@ -1,8 +1,12 @@
-
-
-namespace EmptyMVXProjCore
+﻿//------------------------------------------------------------------
+//
+// Copyright (c) 2020 INPS Ltd.
+// All rights reserved.
+//
+//------------------------------------------------------------------
+namespace BaseEmptyMVXProj.Core
 {
-    using EmptyMVXProjCore.ViewModels;
+    using BaseEmptyMVXProj.Core.ViewModel;
     using MvvmCross.Platform.IoC;
 
     public class App : MvvmCross.Core.ViewModels.MvxApplication
